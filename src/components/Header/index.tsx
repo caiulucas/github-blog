@@ -1,4 +1,5 @@
-import LogoSvg from '../..//assets/logo.svg';
+import LogoSvg from '@/assets/logo.svg';
+
 import { HeaderContainer } from './styles';
 
 export function Header() {

@@ -1,3 +1,14 @@
 {
-  "extends": "eslint-config-terralab"
+  "extends": "eslint-config-terralab",
+  "settings": {
+    "import/resolver": {
+      "eslint-import-resolver-custom-alias": {
+        "alias": {
+          "@": "./src",
+          "@/*": "./src/*"
+        },
+        "extensions": [".ts", ".tsx"]        
+      }
+    }
+  }
 }

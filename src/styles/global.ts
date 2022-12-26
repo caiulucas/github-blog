@@ -19,5 +19,26 @@ export const GlobalStyle = createGlobalStyle`
 
   body, input, textarea, button {
     font: 400 1rem Nunito, sans-serif;
+    font-size: 1rem;
+  }
+
+  h1, h2, h3 {
+    color: ${({ theme }) => theme['base-title']};
+  }
+
+  a {
+    text-transform: uppercase;
+    font-weight: 700;
+    color: ${({ theme }) => theme.blue};
+    text-decoration: none;
+
+    &:hover {
+      text-decoration: underline;
+    }
+
+    svg {
+      margin-left: 0.5rem;
+      width: 0.75rem;
+    }
   }
 `;
