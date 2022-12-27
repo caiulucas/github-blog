@@ -10,9 +10,12 @@ import {
 import { useLocation, useNavigate } from 'react-router-dom';
 
 import { Anchor } from '@/components/Anchor';
+import { Anchor as ButtonAnchor } from '@/components/Anchor/button';
 import { InfoLabel } from '@/components/InfoLabel';
+import { Markdown } from '@/components/Markdown';
 import { formatDate } from '@/utils/formatter';
 
+import { Content } from '../Home/styles';
 import { PostContainer, PostInfo } from './styles';
 
 type Issue = {
@@ -52,30 +55,36 @@ export function Post() {
   return (
     <>
       {issue && (
-        <PostContainer>
-          <header>
-            <Anchor href="#" onClick={() => navigate(-1)}>
-              <FaChevronLeft /> Voltar
-            </Anchor>
-            <Anchor href={issue.htmlUrl}>
-              Ver no Github <FaExternalLinkAlt />
-            </Anchor>
-          </header>
+        <>
+          <PostContainer>
+            <header>
+              <ButtonAnchor onClick={() => navigate(-1)}>
+                <FaChevronLeft /> Voltar
+              </ButtonAnchor>
+              <Anchor href={issue.htmlUrl}>
+                Ver no Github <FaExternalLinkAlt />
+              </Anchor>
+            </header>
 
-          <h1>{issue.title}</h1>
+            <h1>{issue.title}</h1>
 
-          <PostInfo>
-            <InfoLabel icon={FaGithub} title={issue.username} />
-            <InfoLabel
-              icon={FaCalendarDay}
-              title={formatDate(issue.updatedAt)}
-            />
-            <InfoLabel
-              icon={FaComment}
-              title={`${issue.comments} comentários`}
-            />
-          </PostInfo>
-        </PostContainer>
+            <PostInfo>
+              <InfoLabel icon={FaGithub} title={issue.username} />
+              <InfoLabel
+                icon={FaCalendarDay}
+                title={formatDate(issue.updatedAt)}
+              />
+              <InfoLabel
+                icon={FaComment}
+                title={`${issue.comments} comentários`}
+              />
+            </PostInfo>
+          </PostContainer>
+
+          <Content>
+            <Markdown>{issue.body}</Markdown>
+          </Content>
+        </>
       )}
     </>
   );
