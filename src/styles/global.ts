@@ -26,19 +26,4 @@ export const GlobalStyle = createGlobalStyle`
     color: ${({ theme }) => theme['base-title']};
   }
 
-  a {
-    text-transform: uppercase;
-    font-weight: 700;
-    color: ${({ theme }) => theme.blue};
-    text-decoration: none;
-
-    &:hover {
-      text-decoration: underline;
-    }
-
-    svg {
-      margin-left: 0.5rem;
-      width: 0.75rem;
-    }
-  }
 `;

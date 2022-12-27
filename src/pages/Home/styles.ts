@@ -27,6 +27,22 @@ export const AuthorContent = styled.div`
     margin-top: 0.5rem;
     line-height: 1.6;
   }
+
+  a {
+    text-transform: uppercase;
+    font-weight: 700;
+    color: ${({ theme }) => theme.blue};
+    text-decoration: none;
+
+    &:hover {
+      text-decoration: underline;
+    }
+
+    svg {
+      margin-left: 0.5rem;
+      width: 0.75rem;
+    }
+  }
 `;
 
 export const AuthorInfo = styled.div`

@@ -1,13 +1,22 @@
+import { Link } from 'react-router-dom';
 import styled from 'styled-components';
 
-export const PostContainer = styled.div`
+export const PostCardContainer = styled(Link)`
   width: 100%;
   display: flex;
   flex-direction: column;
   padding: 2rem;
 
+  color: ${({ theme }) => theme['base-text']};
   background-color: ${({ theme }) => theme['base-post']};
   border-radius: 10px;
+  cursor: pointer;
+
+  text-decoration: none;
+
+  &:hover {
+    box-shadow: 0 0 0 2px ${({ theme }) => theme.blue};
+  }
 
   div {
     display: flex;
