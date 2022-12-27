@@ -6,6 +6,8 @@ import {
   FaUserFriends
 } from 'react-icons/fa';
 
+import { Anchor } from '@/components/Anchor';
+import { InfoLabel } from '@/components/InfoLabel';
 import { api } from '@/libs/api';
 
 import { PostCard } from './components/PostCard';
@@ -71,56 +73,51 @@ export function Home() {
 
   return (
     <>
-      <Author>
-        <img src={user?.avatarUrl} alt="Author" />
+      {user && (
+        <>
+          <Author>
+            <img src={user.avatarUrl} alt="Author" />
 
-        <AuthorContent>
-          <header>
-            <h2>{user?.name}</h2>
-            <a href={user?.url} target="_blank" rel="noreferrer">
-              Github <FaExternalLinkAlt />
-            </a>
-          </header>
-          <p>{user?.bio}</p>
-          <AuthorInfo>
-            <span>
-              <FaGithub />
-              {user?.login}
-            </span>
-            <span>
-              <FaBuilding />
-              {user?.location}
-            </span>
-            <span>
-              <FaUserFriends />
-              {user?.followers} seguidores
-            </span>
-          </AuthorInfo>
-        </AuthorContent>
-      </Author>
+            <AuthorContent>
+              <header>
+                <h2>{user.name}</h2>
+                <Anchor href={user.url} target="_blank" rel="noreferrer">
+                  Github <FaExternalLinkAlt />
+                </Anchor>
+              </header>
+              <p>{user.bio}</p>
+              <AuthorInfo>
+                <InfoLabel icon={FaGithub} title={user.login} />
+                <InfoLabel icon={FaBuilding} title={user.location} />
+                <InfoLabel icon={FaUserFriends} title={user.followers} />
+              </AuthorInfo>
+            </AuthorContent>
+          </Author>
 
-      <Content>
-        <header>
-          <div>
-            <h2>Publicações</h2>
-            <span>{issues.length} publicações</span>
-          </div>
-          <form onSubmit={handleSubmit}>
-            <input
-              type="text"
-              placeholder="Buscar conteúdo"
-              value={searchText}
-              onChange={(e) => setSearchText(e.currentTarget.value)}
-            />
-          </form>
-        </header>
+          <Content>
+            <header>
+              <div>
+                <h2>Publicações</h2>
+                <span>{issues.length} publicações</span>
+              </div>
+              <form onSubmit={handleSubmit}>
+                <input
+                  type="text"
+                  placeholder="Buscar conteúdo"
+                  value={searchText}
+                  onChange={(e) => setSearchText(e.currentTarget.value)}
+                />
+              </form>
+            </header>
 
-        <Posts>
-          {issues.map((issue) => (
-            <PostCard key={issue.id} data={issue} />
-          ))}
-        </Posts>
-      </Content>
+            <Posts>
+              {issues.map((issue) => (
+                <PostCard key={issue.id} data={issue} />
+              ))}
+            </Posts>
+          </Content>
+        </>
+      )}
     </>
   );
 }

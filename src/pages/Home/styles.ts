@@ -27,41 +27,12 @@ export const AuthorContent = styled.div`
     margin-top: 0.5rem;
     line-height: 1.6;
   }
-
-  a {
-    text-transform: uppercase;
-    font-weight: 700;
-    color: ${({ theme }) => theme.blue};
-    text-decoration: none;
-
-    &:hover {
-      text-decoration: underline;
-    }
-
-    svg {
-      margin-left: 0.5rem;
-      width: 0.75rem;
-    }
-  }
 `;
 
 export const AuthorInfo = styled.div`
   margin-top: 1.5rem;
   display: flex;
   gap: 1.5rem;
-
-  span {
-    display: flex;
-    align-items: center;
-    gap: 0.5rem;
-    line-height: 1.6;
-
-    svg {
-      height: 1.125rem;
-      width: 1.125rem;
-      color: ${({ theme }) => theme['base-label']};
-    }
-  }
 `;
 
 export const Content = styled.main`

@@ -1,5 +1,4 @@
-import { formatDistance } from 'date-fns';
-import ptBR from 'date-fns/esm/locale/pt-BR';
+import { formatDate } from '@/utils/formatter';
 
 import { PostCardContainer } from './styles';
 
@@ -14,18 +13,13 @@ interface PostCardProps {
 }
 
 export function PostCard({ data }: PostCardProps) {
-  function formatDate() {
-    return formatDistance(data.updatedAt, new Date(), {
-      addSuffix: true,
-      locale: ptBR
-    });
-  }
-
   return (
-    <PostCardContainer to={`/post/${data.id}`}>
+    <PostCardContainer to={`/post/${data.id}`} state={{ url: data.url }}>
       <div>
         <h1>{data.title}</h1>
-        <time dateTime={data.updatedAt.toLocaleString()}>{formatDate()}</time>
+        <time dateTime={data.updatedAt.toLocaleString()}>
+          {formatDate(data.updatedAt)}
+        </time>
       </div>
 
       <p>{data.body}</p>
